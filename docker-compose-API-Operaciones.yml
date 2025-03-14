@@ -1,0 +1,32 @@
+services:
+  backend:
+    container_name: django_app
+    build: 
+      context: ./API_Operaciones
+      target: api
+    volumes:
+      - operaciones_static_volume:/home/app/web/staticfiles
+    env_file:
+      - API_Operaciones/.env
+
+  docs:
+    container_name: django_docs
+    build: 
+      context: ./API_Operaciones
+      target: docs
+    env_file:
+      - API_Operaciones/.env
+
+  nginx:
+    build: ./API_Operaciones_WS
+    ports:
+      - "8000:560"
+      - "8001:550"
+    volumes:
+      - operaciones_static_volume:/home/app/web/staticfiles
+    depends_on:
+      - backend
+      - docs
+
+volumes:
+  operaciones_static_volume:

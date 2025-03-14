@@ -20,8 +20,8 @@ services:
   nginx:
     build: ./API_Operaciones_WS
     ports:
-      - "8000:560"
-      - "8001:550"
+      - "8000:8000"
+      - "8001:8001"
     volumes:
       - operaciones_static_volume:/home/app/web/staticfiles
     depends_on:

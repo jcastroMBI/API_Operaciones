@@ -234,6 +234,7 @@ class ConsultarFlujoCaja(APIView):
         codigo_portafolio,
         liquidacion,
         moneda,
+        uso_flujo_caja,
         fecha_inicio,
         fecha_termino,
     ):
@@ -307,7 +308,7 @@ class ConsultarFlujoCaja(APIView):
                 {
                     "IdInterno": 0,
                     "Filtro": "UsoFlujoCaja",
-                    "Valor": "CUENTA_INVERSION",
+                    "Valor": uso_flujo_caja,
                     "IdMoneda": moneda,
                     "FechaInicioConsulta": fecha_inicio,
                     "FechaTerminoConsulta": fecha_termino,

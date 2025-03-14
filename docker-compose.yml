@@ -1,16 +1,16 @@
 services:
-  backend:
-    container_name: django_app
+  main:
+    container_name: API_Operaciones
     build: 
       context: ./API_Operaciones
       target: api
     volumes:
-      - operaciones_static_volume:/home/app/web/staticfiles
+      - static_volume:/home/app/web/staticfiles
     env_file:
       - API_Operaciones/.env
 
   docs:
-    container_name: django_docs
+    container_name: API_Operaciones_Docs
     build: 
       context: ./API_Operaciones
       target: docs
@@ -23,10 +23,10 @@ services:
       - "8000:8000"
       - "8001:8001"
     volumes:
-      - operaciones_static_volume:/home/app/web/staticfiles
+      - static_volume:/home/app/web/staticfiles
     depends_on:
-      - backend
+      - main
       - docs
 
 volumes:
-  operaciones_static_volume:
+  static_volume:

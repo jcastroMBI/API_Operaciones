@@ -71,7 +71,7 @@ urlpatterns = [
         name="movimientos",
     ),
     path(
-        "CuentaInversion/consultarFlujoCaja/<str:documento_identidad>/<str:codigo_portafolio>/<str:liquidacion>/<str:moneda>/<str:fecha_inicio>/<str:fecha_termino>",
+        "CuentaInversion/consultarFlujoCaja/<str:documento_identidad>/<str:codigo_portafolio>/<str:liquidacion>/<str:moneda>/<str:uso_flujo_caja>/<str:fecha_inicio>/<str:fecha_termino>",
         ConsultarFlujoCaja.as_view(),
         name="flujoCaja",
     ),

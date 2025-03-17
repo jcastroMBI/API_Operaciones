@@ -11,7 +11,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Configuración de seguridad
 SECRET_KEY = os.getenv("SECRET_KEY")  # SECURITY WARNING
-DEBUG = False  # SECURITY WARNING
+DEBUG = True  # SECURITY WARNING
 ALLOWED_HOSTS = ["*"]
 
 # Configuracion de HTTPS
@@ -32,11 +32,11 @@ INSTALLED_APPS = [
     # Aplicaciones internas
     "authentification",
     "operaciones",
+    "logs_operaciones",
     # Librerías externas
     "corsheaders",
     "rest_framework",
     "drf_spectacular",
-    "drf_api_logger",
 ]
 
 # Middleware
@@ -49,7 +49,7 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "corsheaders.middleware.CorsMiddleware",
-    "drf_api_logger.middleware.api_logger_middleware.APILoggerMiddleware",
+    "logs_operaciones.middleware.APILoggingMiddleware",
     "authentification.middleware.RestrictOriginMiddleware",
 ]
 

@@ -2,8 +2,6 @@ from django.core.cache import cache
 from django.utils import timezone
 import os
 
-maximo_llamadas_diarias = os.getenv("LLAMADAS_DIARIAS")
-
 
 def llamadas_restantes(user_id):
     """
@@ -25,11 +23,11 @@ def llamadas_restantes(user_id):
 
         cache.set(
             cache_key,
-            maximo_llamadas_diarias,
+            1000,
             (reset_time - timezone.localtime()).total_seconds(),
         )
 
-        remaining_calls = maximo_llamadas_diarias
+        remaining_calls = 1000
 
     return remaining_calls
 

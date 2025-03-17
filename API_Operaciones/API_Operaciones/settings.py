@@ -117,7 +117,9 @@ STATIC_ROOT = "/home/app/web/staticfiles"
 
 # Configuración de CORS
 CORS_ALLOW_CREDENTIALS = True
-CORS_ALLOWED_ORIGINS = [os.getenv("FRONTEND_URL"), os.getenv("DOCS_URL")]
+CORS_ALLOWED_ORIGINS = [
+    url for url in [os.getenv("FRONTEND_URL"), os.getenv("DOCS_URL")] if url
+] + os.getenv("CORS_EXTRA_ORIGINS", "").splitlines()
 CSRF_TRUSTED_ORIGINS = [os.getenv("SELF_URL")]
 
 # Configuración de templates

@@ -9,7 +9,7 @@ class RestrictOriginMiddleware:
 
     def __call__(self, request):
         restricted_paths = [
-            r"^/optimus/instrumento/\d+/$",
+            r"^/Operaciones/Plataforma/consultarPrecioInstrumentos/\d+/$",
         ]
 
         # Obtener el origen de la solicitud

@@ -11,6 +11,10 @@ RUN apt-get update && apt-get install -y \
     unixodbc-dev \
     odbcinst \
     libodbc1 \
+    && curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add - \
+    && curl https://packages.microsoft.com/config/debian/10/prod.list > /etc/apt/sources.list.d/mssql-release.list \
+    && apt-get update \
+    && ACCEPT_EULA=Y apt-get install -y msodbcsql17 \
     && apt-get clean
 
 WORKDIR /app
@@ -26,13 +30,6 @@ COPY . .
 # Target para la API (producción de la API)
 # -------------------------------
 FROM base AS api
-
-# Instalar dependencias específicas del sistema para la API (msodbcsql17)
-RUN curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add - \
-    && curl https://packages.microsoft.com/config/debian/10/prod.list > /etc/apt/sources.list.d/mssql-release.list \
-    && apt-get update \
-    && ACCEPT_EULA=Y apt-get install -y msodbcsql17 \
-    && apt-get clean
 
 # Crear las carpetas donde se guardarán los archivos estáticos para la API
 RUN mkdir -p /home/app/web/staticfiles

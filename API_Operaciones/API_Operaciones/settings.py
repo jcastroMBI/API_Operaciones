@@ -11,7 +11,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Configuración de seguridad
 SECRET_KEY = os.getenv("SECRET_KEY")  # SECURITY WARNING
-DEBUG = True  # SECURITY WARNING
+DEBUG = False  # SECURITY WARNING
 ALLOWED_HOSTS = ["*"]
 
 # Configuracion de HTTPS

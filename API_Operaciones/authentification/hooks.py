@@ -10,11 +10,8 @@ def swagger_preprocessing_hook(endpoints):
     # Ocultamos los paths restringidos si el usuario no es superuser
     filtered_endpoints = []
     for path, path_regex, method, callback in endpoints:
-        print(f"Endpoint: {path}")
         # Verifica si la ruta coincide completamente con los patrones restringidos
         if not any(re.fullmatch(pattern, path) for pattern in restricted_paths):
             filtered_endpoints.append((path, path_regex, method, callback))
-
-    print(filtered_endpoints)
 
     return filtered_endpoints

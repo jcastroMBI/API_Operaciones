@@ -35,10 +35,10 @@ FROM base AS api
 RUN mkdir -p /home/app/web/staticfiles
 
 # Exponer el puerto en tiempo de construcción
-EXPOSE 8000
+EXPOSE 7000
 
 # Comando para correr la API con Gunicorn en el puerto definido
-CMD ["sh", "-c", "gunicorn --bind 0.0.0.0:8000 API_Operaciones.wsgi:application"]
+CMD ["sh", "-c", "gunicorn --bind 0.0.0.0:7000 API_Operaciones.wsgi:application"]
 
 # -------------------------------
 # Target para la Documentación (Docs)
@@ -46,7 +46,7 @@ CMD ["sh", "-c", "gunicorn --bind 0.0.0.0:8000 API_Operaciones.wsgi:application"
 FROM base AS docs
 
 # Exponer el puerto en tiempo de construcción
-EXPOSE 8001
+EXPOSE 6001
 
 # Comando para correr la instancia de Docs usando un settings especial
-CMD ["sh", "-c", "gunicorn --bind 0.0.0.0:8001 API_Operaciones.wsgi:application --env DJANGO_SETTINGS_MODULE=API_Operaciones.settings_docs"]
+CMD ["sh", "-c", "gunicorn --bind 0.0.0.0:6001 API_Operaciones.wsgi:application --env DJANGO_SETTINGS_MODULE=API_Operaciones.settings_docs"]

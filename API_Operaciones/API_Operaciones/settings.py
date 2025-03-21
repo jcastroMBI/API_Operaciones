@@ -11,6 +11,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Configuración de seguridad
 SECRET_KEY = os.getenv("SECRET_KEY")  # SECURITY WARNING
+PASSWORD_STATIC_SALT = os.getenv("SALT")
 DEBUG = False  # SECURITY WARNING
 ALLOWED_HOSTS = ["*"]
 
@@ -155,6 +156,10 @@ SPECTACULAR_SETTINGS = {
 
 # Configuración de modelo de usuario personalizado
 AUTH_USER_MODEL = "authentification.AgenteUser"
+
+PASSWORD_HASHERS = [
+    "authentification.hashers.PBKDF2PasswordHasher",
+]
 
 # Configuración de caché en memoria
 CACHES = {

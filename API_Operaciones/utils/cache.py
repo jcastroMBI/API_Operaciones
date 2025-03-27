@@ -23,11 +23,11 @@ def llamadas_restantes(user_id):
 
         cache.set(
             cache_key,
-            1000,
+            200,
             (reset_time - timezone.localtime()).total_seconds(),
         )
 
-        remaining_calls = 1000
+        remaining_calls = 200
 
     return remaining_calls
 
